@@ -7,12 +7,15 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+<ion-content>
+  <button ion-button full (click)="scan()">Scan new code</button>
+  <ion-list>
+    <button ion-item *ngFor="let code of codes">
+      <ion-icon name="barcode"></ion-icon>
+      {{ code.result }}
+      <div class="item-note" item-right>
+        <ion-icon name="md-trash" (click)="remove(code)"></ion-icon>
+      </div>
+    </button>
+  </ion-list>
 </ion-content>
