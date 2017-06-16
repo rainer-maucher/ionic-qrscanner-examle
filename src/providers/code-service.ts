@@ -18,9 +18,9 @@ export class Code implements ICode {
 
 @Injectable()
 export class CodeService {
-  items: Code[] = [];
+  private items: Code[] = [];
 
-  constructor(public storage: Storage) {
+  constructor(private storage: Storage) {
   }
 
   public init() {

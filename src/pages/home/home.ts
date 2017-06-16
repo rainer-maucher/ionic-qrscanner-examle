@@ -2,9 +2,9 @@ import {Component} from "@angular/core";
 import {NavController, Platform} from "ionic-angular";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {Code, CodeService} from "../../providers/code-service";
-import {Storage} from "@ionic/storage";
 
 import {MyApp} from "../../app/app.component";
+import {CodePage} from "../code/code";
 
 @Component({
   selector: 'page-home',
@@ -15,9 +15,9 @@ import {MyApp} from "../../app/app.component";
 export class HomePage {
   codes: Code[] = [];
 
-  constructor(public storage: Storage, public platform: Platform, public navCtrl: NavController,
-              private barcodeScanner: BarcodeScanner, private codeService: CodeService) {
-    codeService.init().then(() => {
+  constructor(private platform: Platform, private navCtrl: NavController, private barcodeScanner: BarcodeScanner,
+              private codeService: CodeService) {
+      codeService.init().then(() => {
       this.codes = codeService.getAll();
     });
   }
@@ -44,7 +44,11 @@ export class HomePage {
     });
   }
 
-  remove(item) {
-    this.codeService.remove(item);
+  remove(code: Code) {
+    this.codeService.remove(code);
+  }
+
+  itemSelected(code: Code) {
+    this.navCtrl.push(CodePage, {'code': code});
   }
 }
