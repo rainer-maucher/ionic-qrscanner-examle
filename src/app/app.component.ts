@@ -12,7 +12,7 @@ export class MyApp {
    * Set this to false during development so you get dummy entries instead of real scans
    * @type {boolean}
    */
-  public static DEV_TALK_TO_SCANNER = false;
+  public static DEV_TALK_TO_SCANNER = true;
 
   @ViewChild(Nav) nav: Nav;
 
