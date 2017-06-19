@@ -1,26 +1,37 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+## Ionic 2 QR Code Scanner example
+This is an [Ionic](http://ionicframework.com/docs/) Barcode Scanner example application, using the [Ionic Barcode Scanner plugin](https://ionicframework.com/docs/native/barcode-scanner/)
 
-## How to use this template
+The app scans for Ean- and QR-Codes and stores/shows them as a list.
+For easier ongoing of your development also a click on a stored code opens a basic detail page of the scanned code result. 
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
-
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
-
-### With the Ionic CLI:
-
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+## How to use:
+Start with the install of ionic:
 
 ```bash
 $ sudo npm install -g ionic cordova
-$ ionic start mySideMenu sidemenu
 ```
 
-Then, to run it, cd into `mySideMenu` and run:
-
+Then get the github repository and cd into it:
 ```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
+git clone git@github.com:honey-pot/ionic-qrscanner-examle.git
 ```
 
-Substitute ios for android if not on a Mac.
+Now run the project:
+```bash
+ionic cordova run browser
+```
 
+And you should be fine.
+
+## Good  to know:
+- While testing in a browser,  the Barcode Scanner plugin is not working correctly when started with "ionic serve" so always use "ionic cordova run browser"
+
+- For easier development, there is a config in app.component.ts to deactivate the scanner. When a new Scan would be started the application then yust creates a dummy scan entry for you.
+```typescript
+public static DEV_TALK_TO_SCANNER = true; // scanner is active
+
+public static DEV_TALK_TO_SCANNER = false; // scanner is inactive
+```
+
+## gloss
+If you have any problems or issues with this project and documentation,  feel free to open a ticket, so i can improve it ;)
